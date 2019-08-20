@@ -13,7 +13,7 @@ class Game < SceneIF
         def initialize()#初期化処理
             @background = Background.new
             @player = Player.new
-            @obstacle = Obstacle.new
+            @obstacle = Obstacle.new("rock.png")
         end
         def update()#計算処理
             @background.update()

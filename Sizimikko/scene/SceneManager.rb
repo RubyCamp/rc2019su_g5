@@ -1,6 +1,7 @@
 require_relative  "./Scene.rb"
 require_relative  "./title/Title.rb"
 require_relative  "./game/Game.rb"
+require_relative  "./result/Result.rb"
 
 
 class SceneManager
@@ -17,6 +18,8 @@ class SceneManager
             @@scene = Title.new()
         when :GAME
             @@scene = Game.new()
+        when :RESULT
+            @@scene = Result.new()
         when nil
 
         else

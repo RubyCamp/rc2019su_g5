@@ -20,7 +20,7 @@ class Game < SceneIF
             @player.update()
             @obstacle.update()
             if @player === @obstacle#テスト用衝突判定
-                SceneManager.setNextScene(:TITLE)
+                SceneManager.setNextScene(:RESULT)
             end
 
 

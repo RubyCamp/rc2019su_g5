@@ -14,7 +14,7 @@ class Player < Sprite
         @y_prev         #ジャンプ用　前の座標保持
         @y_temp         #ジャンプ用　前の座標保持
 
-        def jump()
+        def jump()#ジャンプ処理
             if(@jflag == true)
                 @y_temp = self.y
                 self.y +=(self.y-@y_prev)+1
@@ -32,7 +32,7 @@ class Player < Sprite
             end
         end
 
-        def animetion()
+        def animetion()#アニメーション（走ってるように見せる)
             @animec += 1
             @animec  = @animec % (@FRAMETIME * @image.size())
         end

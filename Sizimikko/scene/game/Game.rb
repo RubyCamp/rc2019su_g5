@@ -6,9 +6,9 @@ require_relative  "../SceneManager.rb"
 require_relative  "./Background.rb"
 class Game < SceneIF
     private
-        @background
-        @player
-        @obstacle
+        @background #背景のクラス
+        @player     #プレイヤークラス 
+        @obstacle   #障害物クラス
     public
         def initialize()#初期化処理
             @background = Background.new
@@ -20,7 +20,7 @@ class Game < SceneIF
             @player.update()
             @obstacle.update()
             if @player === @obstacle#テスト用衝突判定
-                SceneManager.setNextScene(:RESULT)
+                SceneManager.setNextScene(:RESULT)#次フレームでリザルト画面へ移行
             end
 
 

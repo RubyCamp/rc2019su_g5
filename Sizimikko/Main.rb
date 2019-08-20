@@ -2,8 +2,8 @@ require "dxruby"
 require_relative  "./scene/SceneManager.rb"
 
 
-Window.width = 1024
-Window.height = 768
+Window.width = 900
+Window.height = 650
 
 Window.loop do
     SceneManager.changeScene()

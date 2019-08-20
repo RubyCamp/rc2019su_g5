@@ -3,7 +3,7 @@ require "dxruby"
 class Player
     def initialize()#初期化処理
         @GROUND = 300
-        @FRAMETIME = 5
+        @FRAMETIME = 10
         @x = 100
         @y = @GROUND
         @jumppower = 10

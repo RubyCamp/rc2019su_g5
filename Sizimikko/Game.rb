@@ -1,6 +1,7 @@
 require "dxruby"
 require "./Player.rb"
 require "./Scene.rb"
+require "/.Obstacle.rb"
 class Game < SceneIF
     
     def initialize()#初期化処理

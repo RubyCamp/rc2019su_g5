@@ -5,8 +5,8 @@ class Player < Sprite
         @GROUND = 300   #地面の位置
         @FRAMETIME = 5  #アニメーションが切り替わるフレーム数
         @jumppower      #ジャンプする力  
-        @imwidth        #画像幅
-        @imheight       #画像高さ
+        @IMWIDTH        #画像幅
+        @IMHEIGHT       #画像高さ
         @baseimage      #一枚画像
         @image          #切り取った画像を入れる配列
         @animec         #アニメーションに使うカウンタ
@@ -47,8 +47,8 @@ class Player < Sprite
         #ジャンプする力
         @jumppower = 10
         #画像の１マスのサイズ
-        @imwidth = 32
-        @imheight = 32
+        @IMWIDTH = 32
+        @IMHEIGHT = 32
   
         
         #ジャンプしているかどうか
@@ -58,7 +58,7 @@ class Player < Sprite
         #アニメーション用の画像切り抜き
         @image = []
         3.times do |i|
-            @image[i] = @baseimage.slice(@imwidth * i, @imheight * 2, @imwidth, @imheight)
+            @image[i] = @baseimage.slice(@IMWIDTH * i, @IMHEIGHT * 2, @IMWIDTH, @IMHEIGHT)
         end
         self.image = @image[0]#Spriteクラスなので追加
         #アニメーション用のカウンタ

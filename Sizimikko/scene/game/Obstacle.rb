@@ -1,6 +1,15 @@
 require "dxruby"
 
 class Obstacle < Sprite
+    private
+        @GROUND
+        @Obstaclespeed
+
+        def move()
+            self.x = self.x - @Obstaclespeed
+        end
+        
+    public
     def initialize()
         super
         @GROUND =300 #地面の位置
@@ -10,8 +19,9 @@ class Obstacle < Sprite
         self.y = @GROUND
 
     end
+
     def update()
-            self.x = self.x - @Obstaclespeed
+        move()
     end
 
     def hit()

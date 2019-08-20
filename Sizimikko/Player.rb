@@ -38,6 +38,8 @@ class Player < Sprite
         end
     public
     def initialize()#初期化処理
+        super
+
         @GROUND = 300 #地面の位置
         #座標
         self.x = 100
@@ -48,7 +50,7 @@ class Player < Sprite
         @imwidth = 32
         @imheight = 32
   
-        self.image = @image#Spriteクラスなので追加
+        
         #ジャンプしているかどうか
         @jflag = false
         #画像
@@ -58,6 +60,7 @@ class Player < Sprite
         3.times do |i|
             @image[i] = @baseimage.slice(@imwidth * i, @imheight * 2, @imwidth, @imheight)
         end
+        self.image = @image[0]#Spriteクラスなので追加
         #アニメーション用のカウンタ
         @animec = 0
         #アニメーションが切り替わるフレーム数
@@ -70,5 +73,9 @@ class Player < Sprite
     end
     def draw()#描画処理
         Window.draw(self.x,self.y,@image[@animec/@FRAMETIME])
+    end
+
+    def hit(obj)
+
     end
 end

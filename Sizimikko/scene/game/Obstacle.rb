@@ -3,11 +3,11 @@ require "dxruby"
 class Obstacle < Sprite
     def initialize()
         super
-        @GROUND =300
-        self.x = 1024
-        self.y = @GROUND
+        @GROUND =300 #地面の位置
         @Obstaclespeed = 5
         self.image = Image.load("resource/rock.png")
+        self.x = Window.width + self.image.width
+        self.y = @GROUND
 
     end
     def update()

@@ -1,6 +1,8 @@
 require "dxruby"
 require "./Player.rb"
-class Game
+require "./Scene.rb"
+class Game < SceneIF
+    
     def initialize()#初期化処理
         @player = Player.new
     end

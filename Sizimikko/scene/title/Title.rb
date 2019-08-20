@@ -1,5 +1,5 @@
-require "./Scene.rb"
-require "./SceneManager.rb"
+require_relative  "../Scene.rb"
+require_relative  "../SceneManager.rb"
 
 class Title
     private 

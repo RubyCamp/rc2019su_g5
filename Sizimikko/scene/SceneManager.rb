@@ -1,6 +1,6 @@
-require "./Scene.rb"
-require "./Title.rb"
-require "./Game.rb"
+require_relative  "./Scene.rb"
+require_relative  "./title/Title.rb"
+require_relative  "./game/Game.rb"
 
 
 class SceneManager

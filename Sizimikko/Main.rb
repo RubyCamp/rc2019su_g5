@@ -1,6 +1,5 @@
 require "dxruby"
-require "./Game.rb"
-require "./SceneManager.rb"
+require_relative  "./scene/SceneManager.rb"
 
 
 Window.width = 1024

@@ -12,7 +12,7 @@ class Title
     def initialize()
         @cycle = 3000.0
         @twopi = 6.28
-        @font = Font.new(50)
+        @font = Font.new(50 ,"",{:weight => true})
         @subfont = Font.new(27)
         @TITLE = "しまねのねこの冒険"
         @SUBTITLE = "aボタンでゲーム画面へ"

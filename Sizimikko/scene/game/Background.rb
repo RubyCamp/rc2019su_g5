@@ -8,8 +8,13 @@ class Background
         @backimage =[]
         @index = 0
         @backimage[0] = Image.load("resource/pipo-battlebg002b.jpg")
-        @backimage[1] = Image.load("resource/pipo-battlebg011b.jpg") 
+
+    @backimage[1] = Image.load("resource/pipo-battlebg011b.jpg")
+        @backimage[2] = Image.load("resource/ginzan.png")
+        @backimage[3] = Image.load("resource/matsuejou.png")
+
     end
+    
     def update()
          
         

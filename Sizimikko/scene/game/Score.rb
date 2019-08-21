@@ -18,7 +18,8 @@ class Score
             @STTIME = Window.running_time
             @meter = 0
             @ENDMETER = 210 #津和野から松江まで大体
-            @ENDTIME = 1 * 60 * 1000#終わるミリ秒
+            #@ENDTIME = 1 * 60 * 1000#終わるミリ秒
+            @ENDTIME = 30 * 500
             @font = Font.new(30)
         end
 
@@ -34,8 +35,8 @@ class Score
             return @meter
         end
 
-        def meterEndCheck()#エラーあり
-            if @meter >= @ENDMETER
+        def meterEndCheck()#目的地についているかどうかを判定する
+            if @meter.to_i >= @ENDMETER
                 return true
             end
             return false

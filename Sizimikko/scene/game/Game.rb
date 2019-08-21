@@ -38,7 +38,9 @@ class Game < SceneIF
             if collisionCheck() 
                 @clearflag = false
                 SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
-            
+            elsif @score.meterEndCheck()
+                @clearflag = true
+                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
             end
             @background.changeScreen(@score.clacTime())
 

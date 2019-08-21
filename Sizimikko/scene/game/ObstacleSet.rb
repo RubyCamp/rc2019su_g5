@@ -39,5 +39,9 @@ class ObstacleSet
                 @obstacles[i].draw
             end
         end
+
+        def getObstacles()
+            return @obstacles
+        end
 end
     

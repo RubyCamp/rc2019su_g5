@@ -34,7 +34,7 @@ class Score
             return @meter
         end
 
-        def meterEndCheck()
+        def meterEndCheck()#エラーあり
             if @meter >= @ENDMETER
                 return true
             end

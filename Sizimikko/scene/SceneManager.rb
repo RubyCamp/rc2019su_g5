@@ -19,7 +19,13 @@ class SceneManager
         when :GAME
             @@scene = Game.new()
         when :RESULT
-            @@scene = Result.new()
+            if @@scene.class() == Game
+                clearflag = @@scene.getClearFlag()
+                meter = @@scene.getMeter()
+                @@scene = Result.new(clearflag, meter)
+
+            end
+
         when nil
 
         else

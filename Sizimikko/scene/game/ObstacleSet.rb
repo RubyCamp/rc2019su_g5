@@ -10,7 +10,6 @@ class ObstacleSet
             
         end
         def update()
-            @obstacles.unshift()
             t = Window.running_time;
             if (t - @prevtime >= 3000)
                 @obstacles[@obstacles.size] = Obstacle.new("rock.png")
@@ -19,7 +18,6 @@ class ObstacleSet
             @obstacles.size.times do |i|           
                 @obstacles[i].update
             end
-            #puts(@obstacles)
 
            
             @obstacles.size.times do |i| 

@@ -19,7 +19,7 @@ class ObstacleSet
             @obstacles.size.times do |i|           
                 @obstacles[i].update
             end
-            puts(@obstacles)
+            #puts(@obstacles)
 
            
             @obstacles.size.times do |i| 

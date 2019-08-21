@@ -40,12 +40,12 @@ class Player < Sprite
     def initialize()#初期化処理
         super
 
-        @GROUND = 300 #地面の位置
+        @GROUND = Window.height - 200 #地面の位置
         #座標
         self.x = 100
         self.y = @GROUND
         #ジャンプする力
-        @jumppower = 10
+        @jumppower = 20
         #画像の１マスのサイズ
         @IMWIDTH = 96
         @IMHEIGHT = 96

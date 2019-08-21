@@ -4,21 +4,25 @@ require_relative  "../Scene.rb"
 require_relative  "./Obstacle.rb"
 require_relative  "../SceneManager.rb"
 require_relative  "./Background.rb"
+require_relative  "./Score.rb"
 class Game < SceneIF
     private
         @background #背景のクラス
         @player     #プレイヤークラス 
         @obstacle   #障害物クラス
+        @score      #スコアクラス
     public
         def initialize()#初期化処理
             @background = Background.new
             @player = Player.new
             @obstacle = Obstacle.new("rock.png")
+            @score = Score.new
         end
         def update()#計算処理
             @background.update()
             @player.update()
             @obstacle.update()
+            @score.update()
             if @player === @obstacle#テスト用衝突判定
                 SceneManager.setNextScene(:RESULT)#次フレームでリザルト画面へ移行
             end
@@ -29,5 +33,6 @@ class Game < SceneIF
             @background.draw()
             @player.draw()
             @obstacle.draw()
+            @score.draw()
         end
 end

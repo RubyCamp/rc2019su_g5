@@ -9,7 +9,7 @@ class Score
 
         def clacMeter()
             @meter = clacTime() * @ENDMETER   #ゲーム時間５分程度のため逆算
-            @meter = format("%.1f" , @meter)
+            @meter = format("%3.1f" , @meter)
         end
         
 
@@ -20,7 +20,8 @@ class Score
             @ENDMETER = 210 #津和野から松江まで大体
             #@ENDTIME = 1 * 60 * 1000#終わるミリ秒
             @ENDTIME = 30 * 500
-            @font = Font.new(30)
+            @font = Font.new(32)
+            @imwindow = Image.load("resource/window.png")
         end
 
         def update()
@@ -28,7 +29,9 @@ class Score
         end
 
         def draw()
-            Window.draw_font(Window.width - @font.get_width("#{@meter}")-100,@font.size(), "#{@meter} km", @font, {:color => [255,0,0]})
+            offset = @font.get_width("#{@meter}") + 80 
+            Window.draw_scale(Window.width - 195, 5, @imwindow, 0.3, 1, 0, 0)#メッセージウィンドウ描画
+            Window.draw_font(Window.width - offset, @font.size() / 2, "#{@meter} km", @font, {:color => [255,0,0]})
         end
         
         def getMeter()

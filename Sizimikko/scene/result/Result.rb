@@ -5,8 +5,8 @@ require_relative  "../SceneManager.rb"
 class Result < SceneIF
     private
         @image
-        @IMWIDTH
-        @IMHEIGHT
+        @IMWIDTH    #１マス当たりの画像幅
+        @IMHEIGHT   #１マス当たりの画像高さ
     public
         def initialize()
             @IMWIDTH = 32

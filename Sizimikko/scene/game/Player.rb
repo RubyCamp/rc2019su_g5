@@ -14,7 +14,7 @@ class Player < Sprite
         @y_prev         #ジャンプ用　前の座標保持
         @y_temp         #ジャンプ用　前の座標保持
 
-        def jump()
+        def jump()#ジャンプ処理
             if(@jflag == true)
                 @y_temp = self.y
                 self.y +=(self.y-@y_prev)+1
@@ -32,7 +32,7 @@ class Player < Sprite
             end
         end
 
-        def animetion()
+        def animetion()#アニメーション（走ってるように見せる)
             @animec += 1
             @animec  = @animec % (@FRAMETIME * @image.size())
         end
@@ -47,14 +47,14 @@ class Player < Sprite
         #ジャンプする力
         @jumppower = 10
         #画像の１マスのサイズ
-        @IMWIDTH = 32
-        @IMHEIGHT = 32
+        @IMWIDTH = 96
+        @IMHEIGHT = 96
   
         
         #ジャンプしているかどうか
         @jflag = false
         #画像
-        @baseimage = Image.load("resource/testplayer.png")
+        @baseimage = Image.load("resource/player.png")
         #アニメーション用の画像切り抜き
         @image = []
         3.times do |i|

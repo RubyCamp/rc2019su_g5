@@ -2,15 +2,15 @@ require "dxruby"
 
 class Background
     private
-        @image
+        @backimage  #背景画像
     public
     def initialize()
-        @image = Image.load("resource/sky.jpg")
+        @backimage = Image.load("resource/sky.jpg")
     end
     def update()
         
     end
     def draw()
-        Window.draw_scale(0,0,@image,0.5,0.5,0,0)#画像を縮小して描画
+        Window.draw_scale(0,0,@backimage,0.5,0.5,0,0)#画像を縮小して描画
     end
 end

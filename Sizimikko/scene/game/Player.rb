@@ -60,7 +60,8 @@ class Player < Sprite
         3.times do |i|
             @image[i] = @baseimage.slice(@IMWIDTH * i, @IMHEIGHT * 2, @IMWIDTH, @IMHEIGHT)
         end
-        self.image = @image[0]#Spriteクラスなので追加
+
+        self.image = Image.load("resource/playhit.png")#当たり判定を追加
         #アニメーション用のカウンタ
         @animec = 0
         #アニメーションが切り替わるフレーム数

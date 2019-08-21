@@ -7,7 +7,8 @@ class Background
     def initialize()
         @backimage =[]
         @index = 0
-        @backimage[0] = Image.load("resource/sky.jpg")
+        @backimage[0] = Image.load("resource/pipo-battlebg002b.jpg")
+        @backimage[1] = Image.load("resource/pipo-battlebg011b.jpg") 
     end
     def update()
          
@@ -16,7 +17,7 @@ class Background
         
     end
     def draw()
-        Window.draw_scale(0,0,@backimage[@index],0.5,0.5,0,0)#画像を縮小して描画
+        Window.draw(0,0,@backimage[@index])#画像を縮小して描画
     end
 
     def changeScreen(progress)

@@ -46,7 +46,7 @@ class GameClear
         Window.draw_font(Window.width/2 - @font.get_width("GAME CLEAR")/2, Window.height/2 - @font.size(),"GAME CLEAR", @font)
         Window.draw_scale(100,Window.height - 100, @image, 2.5, 2.5)
         Window.draw_scale(230,Window.height - 300,@fuki, -1,0.6)
-        Window.draw_font(300,Window.height - 150,"生まっつんに会えたニャン", @subfont, {:color => [0,0,0]})
+        Window.draw_font(300,Window.height - 150,"生Matzに会えたニャン", @subfont, {:color => [0,0,0]})
     end
 
 end

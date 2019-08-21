@@ -47,14 +47,14 @@ class Player < Sprite
         #ジャンプする力
         @jumppower = 10
         #画像の１マスのサイズ
-        @IMWIDTH = 32
-        @IMHEIGHT = 32
+        @IMWIDTH = 96
+        @IMHEIGHT = 96
   
         
         #ジャンプしているかどうか
         @jflag = false
         #画像
-        @baseimage = Image.load("resource/testplayer.png")
+        @baseimage = Image.load("resource/player.png")
         #アニメーション用の画像切り抜き
         @image = []
         3.times do |i|

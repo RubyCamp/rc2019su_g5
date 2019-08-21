@@ -14,7 +14,7 @@ class Obstacle < Sprite
         super
         @GROUND =300 #地面の位置
         @Obstaclespeed = 5
-        self.image = Image.load("resource/" + @imagepath)
+        self.image = Image.load("resource/#{imagepath}")
         self.x = Window.width + self.image.width
         self.y = @GROUND
 

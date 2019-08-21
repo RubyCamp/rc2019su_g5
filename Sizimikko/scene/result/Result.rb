@@ -10,10 +10,12 @@ class Result < SceneIF
 
     public
         def initialize(clearflag, meter)
+            clearflag = true
             if clearflag
-                
-            end
+            @game = GameClear.new()
+            elsif
             @game = GameOver.new(meter)
+            end
             
         end
 
@@ -29,14 +31,23 @@ end
 
 class GameClear
     def initialize()
-        
-
+        @font = Font.new(50)
+        @subfont = Font.new(30)
+        @backimage = Image.load("resource/sky.jpg")
+        @IMWIDTH = 96
+        @IMHEIGHT = 96
+        @image = Image.load("resource/player.png")
+        @image = @image.slice(@IMWIDTH * 1, @IMHEIGHT * 0, @IMWIDTH, @IMHEIGHT)
+        @fuki = Image.load("resource/fuki.png")
     end
     def update()
 
     end
     def draw()
-
+        Window.draw_scale(0,0,@backimage,0.5,0.5,0,0)
+        Window.draw_font(Window.width/2 - @font.get_width("GAME CLEAR")/2, Window.height/2 - @font.size(),"GAME CLEAR", @font)
+        Window.draw_scale(100,Window.height - 100, @image, 2.5, 2.5)
+        Window.draw_scale(230,Window.height - 300,@fuki, -1,0.6)
     end
 
 end

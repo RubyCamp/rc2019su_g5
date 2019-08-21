@@ -9,10 +9,10 @@ class Background
         @index = 0
         @font = Font.new(32)
         #背景画像の追加
-        @backimage[0] = Image.load("resource/pipo-battlebg002b.jpg")
-        @backimage[1] = Image.load("resource/pipo-battlebg011b.jpg")
-        @backimage[2] = Image.load("resource/ginzan.png")
-        @backimage[3] = Image.load("resource/matsuejou.png")
+        @backimage[0] = Image.load("resource/back/forest.jpg")
+        @backimage[1] = Image.load("resource/back/ginzan.png")
+        @backimage[2] = Image.load("resource/back/sinziko.jpg")
+        @backimage[3] = Image.load("resource/back/sky.jpg")
         @backimage[4] = @backimage[3]
         #文字列の追加
         @string = []

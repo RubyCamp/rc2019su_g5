@@ -31,7 +31,7 @@ class GameClear
     def initialize()
         @font = Font.new(70)
         @subfont = Font.new(30)
-        @backimage = Image.load("resource/sky.jpg")
+        @backimage = Image.load("resource/back/sky.jpg")
         @IMWIDTH = 96
         @IMHEIGHT = 96
         @image = Image.load("resource/player.png")
@@ -42,7 +42,7 @@ class GameClear
 
     end
     def draw()
-        Window.draw_scale(0,0,@backimage,0.5,0.5,0,0)
+        Window.draw(0,0,@backimage)
         Window.draw_font(Window.width/2 - @font.get_width("GAME CLEAR")/2, Window.height/2 - @font.size(),"GAME CLEAR", @font)
         Window.draw_scale(100,Window.height - 100, @image, 2.5, 2.5)
         Window.draw_scale(230,Window.height - 300,@fuki, -1,0.6)
@@ -69,7 +69,7 @@ class GameOver
 
         end
         def draw()
-            Window.draw_scale(100,Window.height - 100, @image, 2.5, 2.5)
+            Window.draw_scale(100, Window.height - 100, @image, 2.5, 2.5)
             Window.draw_scale(200,Window.height - 300,@fuki, -1,0.6)
             Window.draw_font(Window.width/2 - @font.get_width("GAME OVER")/2, Window.height/2 - @font.size(),"GAME OVER", @font)
             Window.draw_font(300,Window.height - 150,"#{@meter} km進みました。", @subfont, {:color => [0,0,0]})

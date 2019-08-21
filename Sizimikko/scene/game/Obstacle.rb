@@ -17,8 +17,6 @@ class Obstacle < Sprite
         self.image = Image.load("resource/#{imagepath}")
         self.x = Window.width + self.image.width
         self.y = @GROUND
-    
-
     end
     def offScreencheck()
         if (self.x <= 0 - self.image.width)

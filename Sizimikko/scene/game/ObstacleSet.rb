@@ -2,7 +2,7 @@ require_relative "./Obstacle.rb"
 
 class ObstacleSet
     private
-        @obstacles#集合をどう管理するかは聞いてみる
+        @obstacles
     public
         def initialize()
             @obstacles = []

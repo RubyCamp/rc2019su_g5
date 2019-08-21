@@ -23,6 +23,7 @@ class Game < SceneIF
             @player.update()
             @obstacleset.update()
             @score.update()
+            @background.changeScreen(@score.clacTime())
             if @player === @obstacle#テスト用衝突判定
                 SceneManager.setNextScene(:RESULT)#次フレームでリザルト画面へ移行
             end

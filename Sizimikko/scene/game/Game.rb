@@ -11,22 +11,34 @@ class Game < SceneIF
         @player     #プレイヤークラス 
         @obstacleset   #障害物クラス
         @score      #スコアクラス
+        @clearflag
+        def collisionCheck()#衝突判定　衝突していたらtrue
+            @player.check(@obstacleset.getObstacles()).each do|t|
+                return true
+            end
+            return false
+        end
+
+
+
     public
         def initialize()#初期化処理
             @background = Background.new
             @player = Player.new
-            @obstacleset = ObstacleSet.new()
+            @obstacleset = ObstacleSet.new
             @score = Score.new
+            @clearflag = false
         end
         def update()#計算処理
             @background.update()
             @player.update()
             @obstacleset.update()
             @score.update()
-            if @player === @obstacle#テスト用衝突判定
-                SceneManager.setNextScene(:RESULT)#次フレームでリザルト画面へ移行
+            #衝突判定
+            if collisionCheck() 
+                @clearflag = false
+                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
             end
-
 
         end
         def draw()#描画処理
@@ -34,5 +46,11 @@ class Game < SceneIF
             @player.draw()
             @obstacleset.draw()
             @score.draw()
+        end
+        def getClearFlag()
+            return @clearflag
+        end
+        def getMeter()
+            return @score.getMeter()
         end
 end

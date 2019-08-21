@@ -19,6 +19,17 @@ class Game < SceneIF
             return false
         end
 
+        def gameEndCheck()
+            if collisionCheck() 
+                @clearflag = false
+                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
+            elsif @score.meterEndCheck()
+                @clearflag = true
+                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
+            end
+
+        end
+
 
 
     public
@@ -34,16 +45,8 @@ class Game < SceneIF
             @player.update()
             @obstacleset.update()
             @score.update()
-            #衝突判定
-            if collisionCheck() 
-                @clearflag = false
-                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
-            elsif @score.meterEndCheck()
-                @clearflag = true
-                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
-            end
-            @background.changeScreen(@score.clacTime())
-
+            @background.changeScreen(@score.clacTime())#進んだ距離に応じて背景を変更する
+            gameEndCheck()#ゲームの終了チェック
         end
         def draw()#描画処理
             @background.draw()

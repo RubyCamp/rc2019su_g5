@@ -34,8 +34,9 @@ class GameClear
         @backimage = Image.load("resource/back/sky.jpg")
         @IMWIDTH = 96
         @IMHEIGHT = 96
-        @image = Image.load("resource/player.png")
-        @image = @image.slice(@IMWIDTH * 1, @IMHEIGHT * 0, @IMWIDTH, @IMHEIGHT)
+        @matzim = Image.load("resource/matz.png")
+        @catim = Image.load("resource/player.png")
+        @catim = @catim.slice(@IMWIDTH * 1, @IMHEIGHT * 0, @IMWIDTH, @IMHEIGHT)
         @fuki = Image.load("resource/fuki.png")
     end
     def update()
@@ -44,7 +45,8 @@ class GameClear
     def draw()
         Window.draw(0,0,@backimage)
         Window.draw_font(Window.width/2 - @font.get_width("GAME CLEAR")/2, Window.height/2 - @font.size(),"GAME CLEAR", @font)
-        Window.draw_scale(100,Window.height - 100, @image, 2.5, 2.5)
+        Window.draw_scale(100,Window.height - 100, @catim, 2.5, 2.5)
+        Window.draw(Window.width - 220,Window.height - 250, @matzim)
         Window.draw_scale(230,Window.height - 300,@fuki, -1,0.6)
         Window.draw_font(300,Window.height - 150,"生Matzに会えたニャン", @subfont, {:color => [0,0,0]})
     end
@@ -58,8 +60,8 @@ class GameOver
         def initialize(meter)
             @IMWIDTH = 96
             @IMHEIGHT = 96
-            @image = Image.load("resource/player.png")
-            @image = @image.slice(@IMWIDTH * 1, @IMHEIGHT * 0, @IMWIDTH, @IMHEIGHT)
+            @catim = Image.load("resource/player.png")
+            @catim = @catim.slice(@IMWIDTH * 1, @IMHEIGHT * 0, @IMWIDTH, @IMHEIGHT)
             @fuki = Image.load("resource/fuki.png")
             @meter = meter
             @font = Font.new(70)
@@ -69,7 +71,7 @@ class GameOver
 
         end
         def draw()
-            Window.draw_scale(100, Window.height - 100, @image, 2.5, 2.5)
+            Window.draw_scale(100, Window.height - 100, @catim, 2.5, 2.5)
             Window.draw_scale(200,Window.height - 300,@fuki, -1,0.6)
             Window.draw_font(Window.width/2 - @font.get_width("GAME OVER")/2, Window.height/2 - @font.size(),"GAME OVER", @font)
             Window.draw_font(300,Window.height - 150,"#{@meter} km進みました。", @subfont, {:color => [0,0,0]})

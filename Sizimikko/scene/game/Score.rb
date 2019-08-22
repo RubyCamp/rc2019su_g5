@@ -8,7 +8,7 @@ class Score
         @font
 
         def clacMeter()
-            @meter = clacTime() * @ENDMETER   #ゲーム時間５分程度のため逆算
+            @meter = calcTime() * @ENDMETER   #ゲーム時間５分程度のため逆算
             if @meter > 210
                 @meter = 210.0
             end
@@ -22,7 +22,7 @@ class Score
             @meter = 0
             @ENDMETER = 210 #津和野から松江まで大体
             @ENDTIME = 1 * 60 * 1000#終わるミリ秒
-            #@ENDTIME = 30 * 500
+            #@ENDTIME = 20
             @font = Font.new(32)
             @imwindow = Image.load("resource/window.png")
             @imlabo = Image.load("resource/labo.png")
@@ -49,7 +49,7 @@ class Score
             return false
         end
 
-        def clacTime()
+        def calcTime()
             return (Window.running_time - @STTIME) / @ENDTIME
         end
 

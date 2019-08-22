@@ -38,7 +38,6 @@ class ObstacleSet
                     @time = rand(3) * 300 + 1000
                 elsif @obstacles.size == 0
                 @obstacles[@obstacles.size] = Obstacle.new("labo.png", 5)
-                @obstacles[0].objspeed()
                 end
 
             end 
@@ -47,7 +46,7 @@ class ObstacleSet
                 @obstacles[i].update
             end
 
-           cnt = 0
+            cnt = 0
             @obstacles.size.times do |i|
                 if(@obstacles[i].offScreencheck() == true) 
                     cnt += 1
@@ -70,7 +69,7 @@ class ObstacleSet
         def changeProggress(progress)
             if (0.25 * (@progress + 1) <= progress)
                 @progress +=1
-                @speed += 4
+                @speed += 3
                 if @progress > 3
                     @progress = 3
                 end

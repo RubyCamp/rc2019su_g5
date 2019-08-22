@@ -38,6 +38,10 @@ class Obstacle < Sprite
         return @name
     end
 
+    def getX()
+        return self.x
+    end
+
     def setsky()
         self.y -= self.image.height() + 20
     end

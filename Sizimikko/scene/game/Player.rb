@@ -26,6 +26,7 @@ class Player < Sprite
                 end
             end
             if(Input.key_push?(K_W) && @jflag == false)
+                @se.play()
                 @jflag = true
                 @y_prev = self.y
                 self.y = self.y-@jumppower
@@ -39,17 +40,19 @@ class Player < Sprite
     public
     def initialize()#初期化処理
         super
+        @se = Sound.new("resource/music/jump2.wav")
+        @se.set_volume(200)
 
-        @GROUND = Window.height - 200 #地面の位置
-        #座標
-        self.x = 100
-        self.y = @GROUND
         #ジャンプする力
         @jumppower = 20
         #画像の１マスのサイズ
         @IMWIDTH = 96
         @IMHEIGHT = 96
-  
+        @GROUND = Window.height - 100 - @IMHEIGHT #地面の位置
+
+        #座標
+        self.x = 100
+        self.y = @GROUND
         
         #ジャンプしているかどうか
         @jflag = false

@@ -26,6 +26,7 @@ class Player < Sprite
                 end
             end
             if(Input.key_push?(K_W) && @jflag == false)
+                @se.play()
                 @jflag = true
                 @y_prev = self.y
                 self.y = self.y-@jumppower
@@ -39,6 +40,8 @@ class Player < Sprite
     public
     def initialize()#初期化処理
         super
+        @se = Sound.new("resource/music/jump2.wav")
+        @se.set_volume(200)
 
         #ジャンプする力
         @jumppower = 20

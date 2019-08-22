@@ -14,7 +14,6 @@ class Background
             @backImage[1] = Image.load("resource/back/ginzan2.png")
             @backImage[2] = Image.load("resource/back/sinziko3.jpg")
             @backImage[3] = Image.load("resource/back/matsuejou.jpg")
-            @backImage[4] = @backImage[3]
 
             #メッセージウィンドウの追加
             @imWindow = []
@@ -31,7 +30,6 @@ class Background
             @placeName[1] = "#{@placeName[0]}　～　石見"
             @placeName[2] = "#{@placeName[1]}　～　出雲"
             @placeName[3] = "#{@placeName[2]}　～　松江"
-            @placeName[4] = @placeName[3]
         end
 
     public
@@ -56,6 +54,9 @@ class Background
     def changeScreen(progress)
         if (0.25 * (@index + 1) <= progress)
             @index +=1
+            if @index > 3
+                @index = 3
+            end
         end
     end
   

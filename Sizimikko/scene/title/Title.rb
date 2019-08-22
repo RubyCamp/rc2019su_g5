@@ -8,9 +8,11 @@ class Title
         @TITLE
         @INFO
         @alpha
+        @se
     public
     def initialize()
         @backimage = Image.load("resource/back/title.png")
+        @se = Sound.new("resource/music/kettei.wav")
         @cycle = 3000.0
         @twopi = 6.28
         @infofont = Font.new(27)
@@ -20,6 +22,7 @@ class Title
     def update()
         changeAlpha()
         if Input.key_push?(K_A) then
+            @se.play()
             SceneManager.setNextScene(:GAME)
         end
     end

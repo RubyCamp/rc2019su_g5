@@ -37,9 +37,11 @@ class Game < SceneIF
             if f == :GameClear
                 @clearflag = true
                 SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
+                @bgm.stop()
             elsif f == :GameOver
                 @clearflag = false
                 SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
+                @bgm.stop()
             end
         end
 

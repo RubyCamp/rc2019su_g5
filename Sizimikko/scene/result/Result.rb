@@ -7,6 +7,7 @@ class Result < SceneIF
         @IMWIDTH    #１マス当たりの画像幅
         @IMHEIGHT   #１マス当たりの画像高さ
         @game
+        @se
 
         def changeAlpha()
             t = Window.running_time;
@@ -14,6 +15,7 @@ class Result < SceneIF
         end
     public
         def initialize(clearflag, meter)
+            @se = Sound.new("resource/music/back.wav")
             @cycle = 3000.0
             @twopi = 6.28
             @alpha = 0
@@ -30,6 +32,7 @@ class Result < SceneIF
             changeAlpha()
             @game.update()
             if Input.key_push?(K_Q) then
+                @se.play()
                 SceneManager.setNextScene(:TITLE)
             end
         end
@@ -51,9 +54,15 @@ class GameClear
         @catim = Image.load("resource/player.png")
         @catim = @catim.slice(@IMWIDTH * 1, @IMHEIGHT * 0, @IMWIDTH, @IMHEIGHT)
         @fuki = Image.load("resource/fuki.png")
+        @se = Sound.new("resource/music/clear.wav")
+        @se.set_volume(200)    
+        @flag = true
     end
     def update()
-
+        if @flag
+            @flag = false
+            @se.play()
+        end
     end
     def draw()
         Window.draw(0,0,@backimage)
@@ -79,9 +88,15 @@ class GameOver
             @meter = meter
             @font = Font.new(70)
             @subfont = Font.new(30)
+            @se = Sound.new("resource/music/over.wav")
+            @flag = true
+            @se.set_volume(200)            
         end
         def update()
-
+            if @flag
+                @flag = false
+                @se.play()
+            end
         end
         def draw()
             Window.draw_scale(100, Window.height - 100, @catim, 2.5, 2.5)

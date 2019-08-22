@@ -25,7 +25,6 @@ class SceneManager
                 @@scene = Result.new(clearflag, meter)
 
             end
-
         when nil
 
         else

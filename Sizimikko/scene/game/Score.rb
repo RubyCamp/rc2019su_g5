@@ -7,6 +7,10 @@ class Score
         @ENDTIME
         @font
 
+        def calcTime()
+            return (Window.running_time - @STTIME) / @ENDTIME
+        end
+
         def clacMeter()
             @meter = calcTime() * @ENDMETER   #ゲーム時間５分程度のため逆算
             if @meter > 210
@@ -26,6 +30,7 @@ class Score
             @font = Font.new(32)
             @imwindow = Image.load("resource/window.png")
             @imlabo = Image.load("resource/labo.png")
+            @progress = 0
         end
 
         def update()
@@ -49,8 +54,14 @@ class Score
             return false
         end
 
-        def calcTime()
-            return (Window.running_time - @STTIME) / @ENDTIME
+        def getProggress()
+            if (0.25 * (@progress + 1) <= calcTime())
+                @progress +=1
+                if @progress > 3
+                    @progress = 3
+                end
+            end
+            return @progress
         end
 
 end

@@ -9,31 +9,38 @@ class Game < SceneIF
     private
         @background #背景のクラス
         @player     #プレイヤークラス 
-        @obstacleset   #障害物クラス
+        @obstacleset#障害物クラス
         @score      #スコアクラス
-        @clearflag
+        @clearflag  #ゲームクリアフラグ
+        @flag       #BGMをゲームループ内で再生させなければならなかったのでしかたなくupdateで１回だけ呼ぶように
+
+        
+        def deliveryProgress()
+            progress = @score.getProggress()
+            @background.setProggress(progress)
+            @obstacleset.setProgress(progress)
+        end
+
         def collisionCheck()#衝突判定　衝突していたらtrue
             @player.check(@obstacleset.getObstacles()).each do|t|
-                if t.getName() == "labo.png"
-                    return 1
+                if t.getName() == "labo.png"#衝突先がオープンソースラボならゲームクリア
+                    return :GameClear
                 else
-                    return 2
+                    return :GameOver
                 end
             end
             return 0
         end
 
         def gameEndCheck()
-            f = collisionCheck() 
-            if f == 1
+            f = collisionCheck()#衝突チェック
+            if f == :GameClear
                 @clearflag = true
                 SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
-            elsif f == 2
+            elsif f == :GameOver
                 @clearflag = false
                 SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
             end
-    
-
         end
 
 
@@ -49,9 +56,10 @@ class Game < SceneIF
             @score = Score.new
             @clearflag = false
             @flag = true
+
         end
         def update()#計算処理
-            if @flag
+            if @flag#１度だけ実行される
              @bgm.play()
              @flag = false
             end
@@ -59,9 +67,9 @@ class Game < SceneIF
             @player.update()
             @score.update()
             @obstacleset.update(@score.getMeter())
-            
-            @background.changeScreen(@score.calcTime())#進んだ距離に応じて背景を変更する
-            @obstacleset.changeProggress(@score.calcTime())
+
+            deliveryProgress()#進捗の受け渡し
+
             gameEndCheck()#ゲームの終了チェック
             
         end
@@ -71,9 +79,11 @@ class Game < SceneIF
             @obstacleset.draw()
             @score.draw()
         end
+
         def getClearFlag()
             return @clearflag
         end
+
         def getMeter()
             return @score.getMeter()
         end

@@ -38,7 +38,6 @@ class ObstacleSet
                     @time = rand(3) * 300 + 1000
                 elsif @obstacles.size == 0
                 @obstacles[@obstacles.size] = Obstacle.new("labo.png", 5)
-                @obstacles[0].objspeed()
                 end
 
             end 

@@ -8,7 +8,7 @@ class Score
         @font
 
         def clacMeter()
-            @meter = clacTime() * @ENDMETER   #ゲーム時間５分程度のため逆算
+            @meter = calcTime() * @ENDMETER   #ゲーム時間５分程度のため逆算
             if @meter > 210
                 @meter = 210.0
             end
@@ -49,7 +49,7 @@ class Score
             return false
         end
 
-        def clacTime()
+        def calcTime()
             return (Window.running_time - @STTIME) / @ENDTIME
         end
 

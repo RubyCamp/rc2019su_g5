@@ -60,7 +60,8 @@ class Game < SceneIF
             @score.update()
             @obstacleset.update(@score.getMeter())
             
-            @background.changeScreen(@score.clacTime())#進んだ距離に応じて背景を変更する
+            @background.changeScreen(@score.calcTime())#進んだ距離に応じて背景を変更する
+            @obstacleset.changeProggress(@score.calcTime())
             gameEndCheck()#ゲームの終了チェック
             
         end

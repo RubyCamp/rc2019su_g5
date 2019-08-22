@@ -10,13 +10,10 @@ class Title
         @alpha
     public
     def initialize()
+        @backimage = Image.load("resource/title.png")
         @cycle = 3000.0
         @twopi = 6.28
-        @font = Font.new(72 ,"",{:weight => true})
-        @subfont = Font.new(50)
         @infofont = Font.new(27)
-        @TITLE = "しまねのねこの冒険"
-        @SUBTITLE = "～Matzに会いに～"
         @INFO = "aボタンでゲーム画面へ"
         @alpha = 0
     end
@@ -27,9 +24,8 @@ class Title
         end
     end
     def draw()
-        Window.draw_font(Window.width/2-@font.get_width(@TITLE)/2, 200, @TITLE, @font)
-        Window.draw_font(Window.width/2-@subfont.get_width(@SUBTITLE)/2, 300, @SUBTITLE, @subfont)
-        Window.draw_font(Window.width/2-@infofont.get_width(@INFO)/2, Window.height - 200,@INFO, @infofont,{alpha: @alpha})
+        Window.draw(0, 0, @backimage)
+        Window.draw_font(Window.width/2-@infofont.get_width(@INFO)/2, Window.height - 200,@INFO, @infofont,{:color => [0,0,0], alpha: @alpha})
     end
     def changeAlpha()
         t = Window.running_time;

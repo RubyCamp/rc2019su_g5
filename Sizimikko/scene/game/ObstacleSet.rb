@@ -10,6 +10,17 @@ class ObstacleSet
         @time       #次の障害物が出現するまでの間隔   
         @progress   #現在のゲームの進捗を保持
 
+        def addObstacle()
+            r =rand(5)
+            if r >= @gimname.size #地上の生物より大きいなら
+                tmp = @obstacles.size
+                @obstacles[tmp] = Obstacle.new(@simname, @speed)
+                @obstacles[tmp].setsky()#空用ｙ座標移動
+            else
+                @obstacles[@obstacles.size] = Obstacle.new(@gimname[@progress][r], @speed)
+            end
+        end
+
     public
         def initialize()
             @obstacles = []
@@ -28,22 +39,14 @@ class ObstacleSet
         end
 
         def update(meter)
-            t = Window.running_time;
-            if ((t - @prevtime >= @time)  )
-                if (meter.to_i <= 195)
-                    if rand(4) == 0
-                        tmp = @obstacles.size
-                        @obstacles[tmp] = Obstacle.new(@simname, @speed)
-                        @obstacles[tmp].setsky()
-                    else
-                        r = rand(4)
-                        puts r
-                        @obstacles[@obstacles.size] = Obstacle.new(@gimname[@progress][r], @speed)
-                    end
-                    @prevtime = t
-                    @time = rand(3) * 300 + 1000
-                elsif @obstacles.size == 0
-                @obstacles[@obstacles.size] = Obstacle.new("labo.png", 5)
+            nowtime = Window.running_time;
+            if nowtime - @prevtime >= @time #障害物の間隔を空ける
+                if meter.to_i <= 200  #200M以下なら障害物を出現させる
+                    addObstacle()#障害物追加
+                    @prevtime = nowtime #次の障害物用に現在の時刻を格納
+                    @time = (rand(3) * 300) + 1300 #ランダムで間隔をあける
+                elsif @obstacles.size == 0  #障害物が残っていないならゲームクリア用のラボを出現させる
+                    @obstacles[@obstacles.size] = Obstacle.new("labo.png", 5)
                 end
 
             end 
@@ -69,7 +72,7 @@ class ObstacleSet
         end
 
         def setProgress(progress)#現在の進捗をゲームクラスからセットする
-            if@progress != progress
+            if @progress != progress
                 @speed += 3
                 @progress = progress
             end

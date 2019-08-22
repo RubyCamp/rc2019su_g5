@@ -54,7 +54,7 @@ class Score
             return false
         end
 
-        def changeProggress()
+        def getProggress()
             if (0.25 * (@progress + 1) <= calcTime())
                 @progress +=1
                 if @progress > 3

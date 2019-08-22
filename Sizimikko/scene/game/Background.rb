@@ -5,8 +5,9 @@ class Background
     private
         @backImage  #背景画像
         @imWindow   #メッセージウィンドウ
-        @placeName     #地名表示用文字列
+        @placeName  #地名表示用文字列
         @font
+        @progress
         def initImage
             #背景画像の追加
             @backImage =[]

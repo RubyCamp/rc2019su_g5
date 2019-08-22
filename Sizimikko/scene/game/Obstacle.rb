@@ -2,24 +2,25 @@ require "dxruby"
 
 class Obstacle < Sprite
     private
-        @GROUND         #地面の位置
+        @GROUND #地面の位置
         @speed  #障害物のスピード
+        @imname #画像名（拡張子付き)
 
         def move()#左方向への移動処理
             self.x = self.x - @speed
         end
         
     public
-    def initialize(imagepath, speed)#画像名（拡張子付き）を引数に
+    def initialize(imagepath, speed)
         super
-        @name = imagepath
-        @GROUND =Window.height - 100 #地面の位置
+        @imname = imagepath
+        @GROUND =Window.height - 100
         self.image = Image.load("resource/#{imagepath}")
         self.x = Window.width + self.image.width
         self.y = @GROUND - self.image.height()
         @speed = speed
     end
-    def offScreencheck()
+    def offScreencheck()#画面外チェック
         if (self.x <= 0 - self.image.width)
             return true
         end
@@ -35,7 +36,7 @@ class Obstacle < Sprite
     end
 
     def getName()
-        return @name
+        return @imname
     end
 
     def getX()

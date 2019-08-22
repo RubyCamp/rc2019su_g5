@@ -67,14 +67,12 @@ class ObstacleSet
             return @obstacles
         end
 
-        def changeProggress(progress)
-            if (0.25 * (@progress + 1) <= progress)
-                @progress +=1
+        def setProgress(progress)
+            if@progress != progress
                 @speed += 3
-                if @progress > 3
-                    @progress = 3
-                end
+                @progress = progress
             end
         end
+
 end
     

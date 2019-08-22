@@ -59,9 +59,9 @@ class Game < SceneIF
             @player.update()
             @score.update()
             @obstacleset.update(@score.getMeter())
-            
-            @background.changeScreen(@score.calcTime())#進んだ距離に応じて背景を変更する
-            @obstacleset.changeProggress(@score.calcTime())
+            progress = @score.changeProggress()
+            @background.setProggress(progress)
+            @obstacleset.setProgress(progress)
             gameEndCheck()#ゲームの終了チェック
             
         end
@@ -71,9 +71,11 @@ class Game < SceneIF
             @obstacleset.draw()
             @score.draw()
         end
+
         def getClearFlag()
             return @clearflag
         end
+
         def getMeter()
             return @score.getMeter()
         end

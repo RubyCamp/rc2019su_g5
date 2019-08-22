@@ -20,8 +20,6 @@ class Background
             @imWindow[0] = Image.load("resource/window.png")
             @imWindow[1] = Image.load("resource/window2.png")
            
-            
-            
         end
         def initString
             #文字列の追加
@@ -34,7 +32,7 @@ class Background
 
     public
     def initialize()
-        @index = 0
+        @progress = 0
         @font = Font.new(32)
         initImage()
         initString()
@@ -43,21 +41,16 @@ class Background
     def update()
     end
     def draw()
-        Window.draw(0,0,@backImage[@index])#画像を縮小して描画
+        Window.draw(0,0,@backImage[@progress])#画像を縮小して描画
         Window.draw(5,5,@imWindow[0])
         Window.draw(0, Window.height - 50,@imWindow[1])
         Window.draw_font(30, Window.height - 40,"Wキーで上にジャンプ", @font, {:color => [0,0,0]})
-        Window.draw_font(100,18,"#{@placeName[@index]}",@font, {:color => [0,100,100]})
+        Window.draw_font(100,18,"#{@placeName[@progress]}",@font, {:color => [0,100,100]})
 
     end
 
-    def changeScreen(progress)
-        if (0.25 * (@index + 1) <= progress)
-            @index +=1
-            if @index > 3
-                @index = 3
-            end
-        end
+    def setProggress(progress)
+        @progress = progress
     end
-  
+ 
 end

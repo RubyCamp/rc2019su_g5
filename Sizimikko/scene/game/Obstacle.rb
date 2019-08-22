@@ -13,7 +13,7 @@ class Obstacle < Sprite
     def initialize(imagepath)#画像名（拡張子付き）を引数に
         super
         @GROUND =Window.height - 200 #地面の位置
-        @Obstaclespeed = 8
+        @Obstaclespeed = 10
         self.image = Image.load("resource/#{imagepath}")
         self.x = Window.width + self.image.width
         self.y = @GROUND

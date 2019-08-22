@@ -7,24 +7,26 @@ class ObstacleSet
         def initialize()
             @obstacles = []
             @prevtime = Window.running_time;
-            
+            @time = 1000
         end
         def update()
             t = Window.running_time;
-            if (t - @prevtime >= 3000)
+            if (t - @prevtime >= @time)
                 @obstacles[@obstacles.size] = Obstacle.new("rock.png")
                 @prevtime = t
+                @time = rand(3) * 300 + 1000
             end 
             @obstacles.size.times do |i|           
                 @obstacles[i].update
             end
 
-           
-            @obstacles.size.times do |i| 
+           cnt = 0
+            @obstacles.size.times do |i|
                 if(@obstacles[i].offScreencheck() == true) 
-                    @obstacles.shift(1)
+                    cnt += 1
                 end
             end
+            @obstacles.shift(cnt)
                 
 
             

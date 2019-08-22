@@ -47,7 +47,7 @@ class ObstacleSet
                 @obstacles[i].update
             end
 
-           cnt = 0
+            cnt = 0
             @obstacles.size.times do |i|
                 if(@obstacles[i].offScreencheck() == true) 
                     cnt += 1
@@ -70,7 +70,7 @@ class ObstacleSet
         def changeProggress(progress)
             if (0.25 * (@progress + 1) <= progress)
                 @progress +=1
-                @speed += 4
+                @speed += 3
                 if @progress > 3
                     @progress = 3
                 end

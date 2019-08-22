@@ -6,9 +6,11 @@ class ObstacleSet
     public
         def initialize()
             @obstacles = []
+
             @prevtime = Window.running_time;
             @time = 1000
         end
+
         def update()
             t = Window.running_time;
             if (t - @prevtime >= @time)
@@ -16,6 +18,7 @@ class ObstacleSet
                 @prevtime = t
                 @time = rand(3) * 300 + 1000
             end 
+
             @obstacles.size.times do |i|           
                 @obstacles[i].update
             end
@@ -28,10 +31,6 @@ class ObstacleSet
             end
             @obstacles.shift(cnt)
                 
-
-            
-            
-
         end
 
         def draw()

@@ -2,8 +2,13 @@ require_relative "./Obstacle.rb"
 
 class ObstacleSet
     private
-        @obstacles
-
+        @obstacles  #障害物たち
+        @simname    #空にいる障害物の画像
+        @gimname    #地面にいる障害物の画像
+        @speed      #障害物全てのスピード
+        @prevtime   #障害物を出現させた時刻を保持
+        @time       #次の障害物が出現するまでの間隔   
+        @progress   #現在のゲームの進捗を保持
 
     public
         def initialize()
@@ -42,24 +47,20 @@ class ObstacleSet
                 end
 
             end 
-
+            cnt = 0#画面外に出ている障害物をカウント
             @obstacles.size.times do |i|           
-                @obstacles[i].update
-            end
-
-            cnt = 0
-            @obstacles.size.times do |i|
+                @obstacles[i].update                
                 if(@obstacles[i].offScreencheck() == true) 
                     cnt += 1
                 end
             end
-            @obstacles.shift(cnt)
+            @obstacles.shift(cnt)#左からはじき出す
                 
         end
 
         def draw()
             @obstacles.size.times do |i|           
-                @obstacles[i].draw
+                @obstacles[i].draw()
             end
         end
 
@@ -67,7 +68,7 @@ class ObstacleSet
             return @obstacles
         end
 
-        def setProgress(progress)
+        def setProgress(progress)#現在の進捗をゲームクラスからセットする
             if@progress != progress
                 @speed += 3
                 @progress = progress

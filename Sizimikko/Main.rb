@@ -10,4 +10,7 @@ Window.loop do
     SceneManager.update()
     SceneManager.draw()
     #60FPS
+    if Input.key_push?(K_ESCAPE) then
+        break
+    end
 end

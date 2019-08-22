@@ -7,6 +7,7 @@ class Result < SceneIF
         @IMWIDTH    #１マス当たりの画像幅
         @IMHEIGHT   #１マス当たりの画像高さ
         @game
+        @se
 
         def changeAlpha()
             t = Window.running_time;
@@ -14,6 +15,7 @@ class Result < SceneIF
         end
     public
         def initialize(clearflag, meter)
+            @se = Sound.new("resource/music/back.wav")
             @cycle = 3000.0
             @twopi = 6.28
             @alpha = 0
@@ -30,6 +32,7 @@ class Result < SceneIF
             changeAlpha()
             @game.update()
             if Input.key_push?(K_Q) then
+                @se.play()
                 SceneManager.setNextScene(:TITLE)
             end
         end

@@ -103,7 +103,7 @@ class GameOver
             Window.draw_scale(200,Window.height - 300,@fuki, -1,0.6)
             Window.draw_font(Window.width/2 - @font.get_width("GAME OVER")/2, Window.height/2 - @font.size(),"GAME OVER", @font)
             Window.draw_font(300,Window.height - 150,"#{@meter} km進みました。", @subfont, {:color => [0,0,0]})
-            Window.draw_font(300,Window.height - 110,"ゴールまで頑張りましょう", @subfont, {:color => [0,0,0]})
+            Window.draw_font(300,Window.height - 110,"ゴールまで頑張るにゃん", @subfont, {:color => [0,0,0]})
         end
 
 end

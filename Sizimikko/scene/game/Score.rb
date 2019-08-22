@@ -21,8 +21,8 @@ class Score
             @STTIME = Window.running_time
             @meter = 0
             @ENDMETER = 210 #津和野から松江まで大体
-            #@ENDTIME = 1 * 60 * 1000#終わるミリ秒
-            @ENDTIME = 30 * 500
+            @ENDTIME = 1 * 60 * 1000#終わるミリ秒
+            #@ENDTIME = 30 * 500
             @font = Font.new(32)
             @imwindow = Image.load("resource/window.png")
             @imlabo = Image.load("resource/labo.png")

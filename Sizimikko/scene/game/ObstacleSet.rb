@@ -6,7 +6,9 @@ class ObstacleSet
     public
         def initialize()
             @obstacles = []
-
+            @imagename = []
+            @imagename[0] = "rock.png"
+            @imagename[1] = "shijimi.png"
             @prevtime = Window.running_time;
             @time = 1000
         end
@@ -14,8 +16,12 @@ class ObstacleSet
         def update(meter)
             t = Window.running_time;
             if ((t - @prevtime >= @time)  )
-                if (meter.to_i <= 180)
-                @obstacles[@obstacles.size] = Obstacle.new("rock.png")
+                if (meter.to_i <= 195)
+                    if meter.to_i <= 100
+                        @obstacles[@obstacles.size] = Obstacle.new(@imagename[0])
+                    else
+                        @obstacles[@obstacles.size] = Obstacle.new(@imagename[1])
+                    end
                 @prevtime = t
                 @time = rand(3) * 300 + 1000
                 elsif @obstacles.size == 0

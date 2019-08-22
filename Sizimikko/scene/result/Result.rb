@@ -54,9 +54,15 @@ class GameClear
         @catim = Image.load("resource/player.png")
         @catim = @catim.slice(@IMWIDTH * 1, @IMHEIGHT * 0, @IMWIDTH, @IMHEIGHT)
         @fuki = Image.load("resource/fuki.png")
+        @se = Sound.new("resource/music/clear.wav")
+        @se.set_volume(200)    
+        @flag = true
     end
     def update()
-
+        if @flag
+            @flag = false
+            @se.play()
+        end
     end
     def draw()
         Window.draw(0,0,@backimage)
@@ -82,9 +88,15 @@ class GameOver
             @meter = meter
             @font = Font.new(70)
             @subfont = Font.new(30)
+            @se = Sound.new("resource/music/over.wav")
+            @flag = true
+            @se.set_volume(200)            
         end
         def update()
-
+            if @flag
+                @flag = false
+                @se.play()
+            end
         end
         def draw()
             Window.draw_scale(100, Window.height - 100, @catim, 2.5, 2.5)

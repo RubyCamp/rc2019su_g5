@@ -8,22 +8,35 @@ class Result < SceneIF
         @IMHEIGHT   #１マス当たりの画像高さ
         @game
 
+        def changeAlpha()
+            t = Window.running_time;
+            @alpha = (Math.sin(t % @cycle / @cycle * @twopi) * 0.42 + 0.58) * 255;
+        end
     public
         def initialize(clearflag, meter)
+            @cycle = 3000.0
+            @twopi = 6.28
+            @alpha = 0
             if clearflag
             @game = GameClear.new()
             elsif
             @game = GameOver.new(meter)
             end
-            
+            @INFO = "qキーでタイトルへ"
+            @infofont = Font.new(27)
         end
 
         def update()
+            changeAlpha()
             @game.update()
+            if Input.key_push?(K_Q) then
+                SceneManager.setNextScene(:TITLE)
+            end
         end
 
         def draw()
             @game.draw()
+             Window.draw_font(Window.width/2-@infofont.get_width(@INFO)/2, Window.height - 300,@INFO, @infofont,{ alpha: @alpha})
         end
 end
 

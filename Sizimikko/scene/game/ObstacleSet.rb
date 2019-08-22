@@ -11,9 +11,9 @@ class ObstacleSet
             @gimname = []
             @simname = "haku.png"
             @gimname[0] = ["dozyousukui.png", @simname]
-            @gimname[1] = ["rock.png" , @siname]
-            @gimname[2] = ["shijimi.png", @siname]
-            @gimname[3] = ["shijimi.png", @siname]
+            @gimname[1] = ["rock.png" , @simname]
+            @gimname[2] = ["shijimi.png", @simname]
+            @gimname[3] = ["shijimi.png", @simname]
             
             @speed = 8
 
@@ -31,7 +31,8 @@ class ObstacleSet
                         @obstacles[tmp] = Obstacle.new(@simname, @speed)
                         @obstacles[tmp].setsky()
                     else
-                        r = rand(1)
+                        r = rand(2)
+                        puts r
                         @obstacles[@obstacles.size] = Obstacle.new(@gimname[@progress][r], @speed)
                     end
                     @prevtime = t

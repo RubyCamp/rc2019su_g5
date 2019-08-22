@@ -12,11 +12,12 @@ class Obstacle < Sprite
     public
     def initialize(imagepath)#画像名（拡張子付き）を引数に
         super
-        @GROUND =Window.height - 200 #地面の位置
+        @name = imagepath
+        @GROUND =Window.height - 100 #地面の位置
         @obstaclespeed = 10
         self.image = Image.load("resource/#{imagepath}")
         self.x = Window.width + self.image.width
-        self.y = @GROUND
+        self.y = @GROUND - self.image.height()
     end
     def offScreencheck()
         if (self.x <= 0 - self.image.width)
@@ -33,7 +34,11 @@ class Obstacle < Sprite
 
     end
 
+    def getName()
+        return @name
+    end
+
     def objspeed()
-        @obstaclespeed = 3
+        @obstaclespeed = 5
     end
 end

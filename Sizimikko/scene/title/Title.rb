@@ -10,7 +10,7 @@ class Title
         @alpha
     public
     def initialize()
-        @backimage = Image.load("resource/title.png")
+        @backimage = Image.load("resource/back/title.png")
         @cycle = 3000.0
         @twopi = 6.28
         @infofont = Font.new(27)

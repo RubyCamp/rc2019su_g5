@@ -12,7 +12,7 @@ class Background
             @backImage =[]
             @backImage[0] = Image.load("resource/back/forest.jpg")
             @backImage[1] = Image.load("resource/back/ginzan2.png")
-            @backImage[2] = Image.load("resource/back/sinziko2.jpg")
+            @backImage[2] = Image.load("resource/back/sinziko3.jpg")
             @backImage[3] = Image.load("resource/back/matsuejou.jpg")
             @backImage[4] = @backImage[3]
 
@@ -40,13 +40,9 @@ class Background
         @font = Font.new(32)
         initImage()
         initString()
-        @taisya =  Obstacle.new("izumotaisya.png")
     end
     
     def update()
-            if @index == 2
-              @taisya.update()
-            end
     end
     def draw()
         Window.draw(0,0,@backImage[@index])#画像を縮小して描画
@@ -55,9 +51,6 @@ class Background
         Window.draw_font(30, Window.height - 40,"Wキーで上にジャンプ", @font, {:color => [0,0,0]})
         Window.draw_font(100,18,"#{@placeName[@index]}",@font, {:color => [0,100,100]})
 
-        if @index == 2
-            @taisya.draw()
-          end
     end
 
     def changeScreen(progress)

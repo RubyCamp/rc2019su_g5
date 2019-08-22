@@ -11,12 +11,18 @@ class ObstacleSet
             @time = 1000
         end
 
-        def update()
+        def update(meter)
             t = Window.running_time;
-            if (t - @prevtime >= @time)
+            if ((t - @prevtime >= @time)  )
+                if (meter.to_i <= 180)
                 @obstacles[@obstacles.size] = Obstacle.new("rock.png")
                 @prevtime = t
                 @time = rand(3) * 300 + 1000
+                elsif @obstacles.size == 0
+                @obstacles[@obstacles.size] = Obstacle.new("labo.png")
+                @obstacles[@obstacles.size - 1].objspeed()
+                end
+
             end 
 
             @obstacles.size.times do |i|           

@@ -14,18 +14,24 @@ class Game < SceneIF
         @clearflag
         def collisionCheck()#衝突判定　衝突していたらtrue
             @player.check(@obstacleset.getObstacles()).each do|t|
-                return true
+                if t.getName() == "labo.png"
+                    return 1
+                else
+                    return 2
+                end
             end
-            return false
+            return 0
         end
 
         def gameEndCheck()
-            if collisionCheck() 
-                @clearflag = false
-                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
-            elsif @score.meterEndCheck()
-                @clearflag = true
-                SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
+            if f = collisionCheck() 
+                if f == 1
+                    @clearflag = true
+                    SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
+                elsif f == 2
+                    @clearflag = false
+                    SceneManager.setNextScene(:RESULT)#衝突していたらリザルト画面へ移行
+                end
             end
 
         end
@@ -43,8 +49,9 @@ class Game < SceneIF
         def update()#計算処理
             @background.update()
             @player.update()
-            @obstacleset.update()
             @score.update()
+            @obstacleset.update(@score.getMeter())
+            
             @background.changeScreen(@score.clacTime())#進んだ距離に応じて背景を変更する
             gameEndCheck()#ゲームの終了チェック
         end

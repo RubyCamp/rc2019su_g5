@@ -9,6 +9,9 @@ class Score
 
         def clacMeter()
             @meter = clacTime() * @ENDMETER   #ゲーム時間５分程度のため逆算
+            if @meter > 210
+                @meter = 210.0
+            end
             @meter = format("%3.1f" , @meter)
         end
         
@@ -22,6 +25,7 @@ class Score
             @ENDTIME = 30 * 500
             @font = Font.new(32)
             @imwindow = Image.load("resource/window.png")
+            @imlabo = Image.load("resource/labo.png")
         end
 
         def update()

@@ -1,42 +1,63 @@
 require "dxruby"
+require_relative "./Obstacle.rb"
 
 class Background
     private
-        @backimage  #背景画像
+        @backImage  #背景画像
+        @imWindow   #メッセージウィンドウ
+        @placeName     #地名表示用文字列
+        @font
+        def initImage
+            #背景画像の追加
+            @backImage =[]
+            @backImage[0] = Image.load("resource/back/forest.jpg")
+            @backImage[1] = Image.load("resource/back/ginzan2.png")
+            @backImage[2] = Image.load("resource/back/sinziko2.jpg")
+            @backImage[3] = Image.load("resource/back/matsuejou.jpg")
+            @backImage[4] = @backImage[3]
+
+            #メッセージウィンドウの追加
+            @imWindow = []
+            @imWindow[0] = Image.load("resource/window.png")
+            @imWindow[1] = Image.load("resource/window2.png")
+           
+            
+            
+        end
+        def initString
+            #文字列の追加
+            @placeName = []
+            @placeName[0] = "津和野"
+            @placeName[1] = "#{@placeName[0]}　～　石見"
+            @placeName[2] = "#{@placeName[1]}　～　出雲"
+            @placeName[3] = "#{@placeName[2]}　～　松江"
+            @placeName[4] = @placeName[3]
+        end
+
     public
     def initialize()
-        @backimage =[]
         @index = 0
         @font = Font.new(32)
-        #背景画像の追加
-        @backimage[0] = Image.load("resource/back/forest.jpg")
-        @backimage[1] = Image.load("resource/back/ginzan2.png")
-        @backimage[2] = Image.load("resource/back/sinziko2.jpg")
-        @backimage[3] = Image.load("resource/back/matsuejou.jpg")
-        @backimage[4] = @backimage[3]
-        #文字列の追加
-        @string = []
-        @string[0] = "津和野"
-        @string[1] = "#{@string[0]}　～　石見"
-        @string[2] = "#{@string[1]}　～　出雲"
-        @string[3] = "#{@string[2]}　～　松江"
-        @string[4] = @string[3]
-        #メッセージウィンドウの追加
-        @imwindow = []
-        @imwindow[0] = Image.load("resource/window.png")
-        @imwindow[1] = Image.load("resource/window2.png")
-
+        initImage()
+        initString()
+        @taisya =  Obstacle.new("izumotaisya.png")
     end
     
     def update()
-
+            if @index == 2
+              @taisya.update()
+            end
     end
     def draw()
-        Window.draw(0,0,@backimage[@index])#画像を縮小して描画
-        Window.draw(5,5,@imwindow[0])
-        Window.draw(0, Window.height - 50,@imwindow[1])
+        Window.draw(0,0,@backImage[@index])#画像を縮小して描画
+        Window.draw(5,5,@imWindow[0])
+        Window.draw(0, Window.height - 50,@imWindow[1])
         Window.draw_font(30, Window.height - 40,"Wキーで上にジャンプ", @font, {:color => [0,0,0]})
-        Window.draw_font(100,18,"#{@string[@index]}",@font, {:color => [0,100,100]})
+        Window.draw_font(100,18,"#{@placeName[@index]}",@font, {:color => [0,100,100]})
+
+        if @index == 2
+            @taisya.draw()
+          end
     end
 
     def changeScreen(progress)
@@ -44,4 +65,5 @@ class Background
             @index +=1
         end
     end
+  
 end
